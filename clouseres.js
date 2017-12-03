@@ -1,3 +1,4 @@
+// Los clouseres son funciones que recuerdan el entorno en que fueron creadas
 // saludarFamilia => outer function
 function saludarFamilia(apellido) {
   // saludarMiembroDeFamilia => inner function
