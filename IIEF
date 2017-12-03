@@ -1,0 +1,6 @@
+// son funciones que se declaran y se ejecutan enseguida
+(
+  function hola(){
+    console.log('hola mundo');
+  }
+)();
