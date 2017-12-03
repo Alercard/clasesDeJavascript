@@ -21,3 +21,13 @@ saludarPerez("Martin")
 saludarPerez("Julieta")
 
 saludarRomero("Jorge")
+
+
+// optimizando la escritura del codigo
+const saludar = (apellido) => (nombre) => console.log(`Hola ${nombre} ${apellido}`);
+
+const saludoLuceros = saludar("Lucero")
+const saludoCorreas = saludar("Correa")
+
+saludoLuceros('Franklin');
+saludoCorreas('Silvia');
