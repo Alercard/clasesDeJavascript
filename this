@@ -1,0 +1,75 @@
+//********************************************************************************************//
+// Ejemplo 1:
+class Persona {
+  constructor(nombre, hobbies = []) {
+    this.nombre = nombre;
+    this.hobbies = hobbies;
+  }
+  listarHobbies() {
+    this.hobbies.forEach( function(hobbie) {
+      console.log(`Hola, mi nombre es ${this.nombre} y me gusta ${hobbie}`);
+    });
+  }
+}
+const frank = new Persona("Frank", [ "jugar", "correr", "trotar" ]);
+frank.listarHobbies();
+
+/*
+En este caso da error porque this esta indefinida dentro del contexto de la funcion anónima
+*/
+//********************************************************************************************//
+// Ejemplo 2: Solucion con _this
+class Persona {
+  constructor(nombre, hobbies = []) {
+    this.nombre = nombre;
+    this.hobbies = hobbies;
+  }
+  listarHobbies() {
+    const _this = this;
+    this.hobbies.forEach( function(hobbie) {
+      console.log(`Hola, mi nombre es ${_this.nombre} y me gusta ${hobbie}`);
+    });
+  }
+}
+const frank = new Persona("Frank", [ "jugar", "correr", "trotar" ]);
+frank.listarHobbies();
+/*
+En este caso _this hace referencia a this dentro del contexto de la funcion.
+En ocasiones, se suele escribir self por _this
+*/
+//********************************************************************************************//
+// Ejemplo 3: Usando bind
+class Persona {
+  constructor(nombre, hobbies = []) {
+    this.nombre = nombre;
+    this.hobbies = hobbies;
+  }
+  listarHobbies() {
+    this.hobbies.forEach( function(hobbie) {
+      console.log(`Hola, mi nombre es ${this.nombre} y me gusta ${hobbie}`);
+    }.bind(this));
+  }
+}
+const frank = new Persona("Frank", [ "jugar", "correr", "trotar" ]);
+frank.listarHobbies();
+/*
+Bind asocia this a la funcion para que sea considerada en su contexto
+*/
+//********************************************************************************************//
+// Ejemplo 4: Usando arrow function
+class Persona {
+  constructor(nombre, hobbies = []) {
+    this.nombre = nombre;
+    this.hobbies = hobbies;
+  }
+  listarHobbies() {
+    this.hobbies.forEach( (hobbie) => {
+      console.log(`Hola, mi nombre es ${this.nombre} y me gusta ${hobbie}`);
+    });
+  }
+}
+const frank = new Persona("Frank", [ "jugar", "correr", "trotar" ]);
+frank.listarHobbies();
+/*
+arrow function asocia automaticamente this a la función
+*/
